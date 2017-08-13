@@ -17,7 +17,7 @@ the ID for an AMI) -> AMI_ID
 -  Name for your launched instance (assuming you're only making the one) -> EC2_INSTANCE_NAME
 
 #### Then:
-Put all that stuff either in the appropriate environment variables
+Put all that stuff in the appropriate environment variables
 
 #### Then:
 vagrant up
