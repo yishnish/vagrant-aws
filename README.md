@@ -1,5 +1,12 @@
 ### Configuration for an EC2 instance
 
+#### This should give you:
+-  Java 8
+-  RVM
+-  Ruby (latest)
+-  Node, NPM
+-  Docker-CE
+
 #### You will need:
 -  Access Key ID -> AWS_ACCESS_KEY_ID
     -  Security, Identity & Compliance -> IAM -> Users -> <user> -> Security Credentials tab (to create a new one)
