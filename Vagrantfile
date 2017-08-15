@@ -72,12 +72,14 @@ Vagrant.configure("2") do |config|
 	
 	#install git
 	#git seems to already be installed
+
 	
 	#--------------NODE-------------------------
 	#install node
 	curl -sL https://deb.nodesource.com/setup_4.x | sh
 	apt-get install -y nodejs
 	#--------------NODE-------------------------	
+
 
 	#------------------------RVM, RUBY AND RAILS-RELATED-GEMS------------------------------
 	#add mpapis public key
@@ -106,11 +108,18 @@ Vagrant.configure("2") do |config|
 	#install nokogiri globally
 	gem install nokogiri
 
-	#stop being AWS_SSH_USER for the rest of this
-	exit
-
 	echo "source /usr/local/rvm/scripts/rvm" >> /home/"#{ENV['AWS_SSH_USERNAME']}"/.bashrc
 	#------------------------RVM, RUBY AND RAILS-RELATED-GEMS------------------------------
+
+
+	#------------------------JAVA AND MAVEN------------------------------------
+	#install open-jdk
+	apt-get install -y openjdk-8-jdk
+	 
+	#install maven
+	apt-get install -y maven
+	#------------------------JAVA AND MAVEN------------------------------------		
+
 
 	#----------------DOCKER------------------------
 	#install docker
@@ -127,16 +136,6 @@ Vagrant.configure("2") do |config|
 	#try to force reload of user so group change takes effect
 	sudo su - "#{ENV['AWS_SSH_USERNAME']}"
 	#----------------DOCKER------------------------
-
-
-	#------------------------JAVA AND MAVEN------------------------------------
-	#install open-jdk
-	apt-get install -y openjdk-8-jdk
-	 
-	#install maven
-	apt-get install -y maven
-	#------------------------JAVA AND MAVEN------------------------------------		
    SHELL
  
 end
-
