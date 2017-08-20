@@ -82,60 +82,38 @@ Vagrant.configure("2") do |config|
 
 
 	#------------------------RVM, RUBY AND RAILS-RELATED-GEMS------------------------------
-	#add mpapis public key
-	gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-
-	#install rvm and current stable ruby 
-	curl -sSL https://get.rvm.io | bash -s stable --ruby
-
-	#change owner of /usr/local/rvm to vagrant user
-	sudo chown -R "#{ENV['AWS_SSH_USERNAME']}" /usr/local/rvm/
-
-        usermod -aG rvm "#{ENV['AWS_SSH_USERNAME']}"
-	source /etc.profile.d/rvm.sh
-
-	#load the rvm script when you launch a bash shell
-	source /usr/local/rvm/scripts/rvm
-
-	rvm install ruby --latest
-
-	#update out-of-date global gems
-	rvm gemset use global
-	gem update
-
-	#install bundler globally
-	gem install bundler
-	#install nokogiri globally
-	gem install nokogiri
-
-	echo "source /usr/local/rvm/scripts/rvm" >> /home/"#{ENV['AWS_SSH_USERNAME']}"/.bashrc
+	apt-get install -y software-properties-common
+	apt-add-repository -y ppa:rael-gc/rvm
+	apt-get update
+	apt-get install -y rvm
+	/usr/share/rvm/bin/rvm install ruby
 	#------------------------RVM, RUBY AND RAILS-RELATED-GEMS------------------------------
 
 
-	#------------------------JAVA AND MAVEN------------------------------------
-	#install open-jdk
-	apt-get install -y openjdk-8-jdk
-	 
-	#install maven
-	apt-get install -y maven
-	#------------------------JAVA AND MAVEN------------------------------------		
+        #------------------------JAVA AND MAVEN------------------------------------
+        #install open-jdk
+        apt-get install -y openjdk-8-jdk
+         
+        #install maven
+        apt-get install -y maven
+        #------------------------JAVA AND MAVEN------------------------------------		
 
 
-	#----------------DOCKER------------------------
-	#install docker
-	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-	add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-	apt-get update
-	apt-cache policy docker-ce
-	apt-get install -y docker-ce
+        #----------------DOCKER------------------------
+        #install docker
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+        add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+        apt-get update
+        apt-cache policy docker-ce
+        apt-get install -y docker-ce
 
         usermod -aG docker "#{ENV['AWS_SSH_USERNAME']}"
 
         #restart docker to pick up the group change
         service docker restart
-	#try to force reload of user so group change takes effect
-	sudo su - "#{ENV['AWS_SSH_USERNAME']}"
-	#----------------DOCKER------------------------
+        #try to force reload of user so group change takes effect
+        sudo su - "#{ENV['AWS_SSH_USERNAME']}"
+        #----------------DOCKER------------------------
    SHELL
  
 end
