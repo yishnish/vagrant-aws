@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
-  # config.vm.network "forwarded_port", guest: 80, host: 8080
+  # config.vm.network "forwarded_port", guest: 3000, host: 80
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -76,27 +76,38 @@ Vagrant.configure("2") do |config|
 	
 	#--------------NODE-------------------------
 	#install node
-	curl -sL https://deb.nodesource.com/setup_4.x | sh
-	apt-get install -y nodejs
+        curl -sL https://deb.nodesource.com/setup_4.x | sh
+        apt-get install -y nodejs
 	#--------------NODE-------------------------	
 
 
-	#------------------------RVM, RUBY AND RAILS-RELATED-GEMS------------------------------
-	apt-get install -y software-properties-common
-	apt-add-repository -y ppa:rael-gc/rvm
-	apt-get update
-	apt-get install -y rvm
-	/usr/share/rvm/bin/rvm install ruby
+#------------------------RVM, RUBY AND RAILS-RELATED-GEMS------------------------------
+        apt-get install -y software-properties-common
+        apt-add-repository -y ppa:rael-gc/rvm
+        apt-get update
+        apt-get install -y rvm
+        /usr/share/rvm/bin/rvm install ruby
+
+# rvm and ruby
+########su - vagrant -c 'curl -sSL https://get.rvm.io | bash -s stable --ruby'
+########su - vagrant -c 'rvm rvmrc warning ignore allGemfiles'
+
+
+
+
+
+
+
 	#------------------------RVM, RUBY AND RAILS-RELATED-GEMS------------------------------
 
 
         #------------------------JAVA AND MAVEN------------------------------------
-        #install open-jdk
-        apt-get install -y openjdk-8-jdk
-         
-        #install maven
-        apt-get install -y maven
-        #------------------------JAVA AND MAVEN------------------------------------		
+#       #install open-jdk
+#       apt-get install -y openjdk-8-jdk
+#        
+#       #install maven
+#       apt-get install -y maven
+#       #------------------------JAVA AND MAVEN------------------------------------		
 
 
         #----------------DOCKER------------------------
