@@ -1,0 +1,2 @@
+docker run --name rizladb -p3306:3306 -e MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD -e MYSQL_DATABASE=$RIZLADB -d mysql:8
+
