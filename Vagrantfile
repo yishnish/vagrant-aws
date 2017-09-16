@@ -81,24 +81,13 @@ Vagrant.configure("2") do |config|
 	#--------------NODE-------------------------	
 
 
-#------------------------RVM, RUBY AND RAILS-RELATED-GEMS------------------------------
+#------------------------RVM & RUBY------------------------------
         apt-get install -y software-properties-common
         apt-add-repository -y ppa:rael-gc/rvm
         apt-get update
         apt-get install -y rvm
         /usr/share/rvm/bin/rvm install ruby
-
-# rvm and ruby
-########su - vagrant -c 'curl -sSL https://get.rvm.io | bash -s stable --ruby'
-########su - vagrant -c 'rvm rvmrc warning ignore allGemfiles'
-
-
-
-
-
-
-
-	#------------------------RVM, RUBY AND RAILS-RELATED-GEMS------------------------------
+	#------------------------RVM & RUBY------------------------------
 
 
         #------------------------JAVA AND MAVEN------------------------------------
