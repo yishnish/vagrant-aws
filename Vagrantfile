@@ -97,7 +97,12 @@ Vagrant.configure("2") do |config|
 #       #install maven
 #       apt-get install -y maven
 #       #------------------------JAVA AND MAVEN------------------------------------		
-
+	#------------------------SSL CERTS----------------------------------
+	apt-get install -y software-properties-common
+	add-apt-repository -y ppa:certbot/certbot
+	apt-get update
+	apt-get install -y python-certbot-nginx 
+	#------------------------SSL CERTS----------------------------------
 
         #----------------DOCKER------------------------
         #install docker

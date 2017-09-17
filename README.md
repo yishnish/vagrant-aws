@@ -33,3 +33,7 @@ vagrant up
 -  sh docker-nginx-proxy-init.sh (that script may be in /vagrant) 
 -  run your docker containers with the environment variable VIRTUAL_HOST=subdomain.domain.tld AND make sure the container is built to EXPOSE the port you want nginx to proxy to.
 -  https://github.com/jwilder/nginx-proxy
+
+#### SSL:
+-  Certbot (https://certbot.eff.org/#ubuntuxenial-nginx) should be installed for you
+-  Run ```sudo certbot --nginx certonly``` to get certificates for the nginx proxy
