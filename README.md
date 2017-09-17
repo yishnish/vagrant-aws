@@ -36,7 +36,12 @@ vagrant up
 
 #### SSL:
 -  Certbot (https://certbot.eff.org/#ubuntuxenial-nginx) should be installed for you
--  Run ```sudo certbot --nginx certonly``` to get certificates for the nginx proxy
+-  Run ```sudo certbot --standalone certonly``` to get certificates for the nginx proxy
+-  Copy the new privkey.pem to ~/certificates/subdomain.domain.tld.key
+-  Copy the new fullchain.pem to ~/certificates/subdomain.domain.tld.crt
+
+#### CORS:
+-  Copy /vagrant/proxy.conf to ~/proxy.conf
 
 #### NOTE:
 -  Installing certbot looks like it leaves an nginx server running, so before youc an bring up the nginx reverse proxy you have to kill the cerbot nginx server (port 80 conflict)
