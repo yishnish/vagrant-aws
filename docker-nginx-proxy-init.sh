@@ -1,1 +1,1 @@
- docker run -d -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock:ro jwilder/nginx-proxy
+docker run --name nginx-proxy -d -p 80:80 -p 443:443 -v /etc/letsencrypt/live/kerblasto.com:/etc/nginx/certs -v /var/run/docker.sock:/tmp/docker.sock:ro -v /home/ubuntu/proxy.conf:/etc/nginx/proxy.conf jwilder/nginx-proxy

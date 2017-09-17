@@ -30,10 +30,13 @@ Put all that stuff in the appropriate environment variables
 vagrant up
 
 #### To start up an nginx proxy in a docker container that proxies to other docker containers:
--  sh docker-nginx-proxy-init.sh (that script may be in /vagrant) 
+-  sh docker-nginx-proxy-init.sh 
 -  run your docker containers with the environment variable VIRTUAL_HOST=subdomain.domain.tld AND make sure the container is built to EXPOSE the port you want nginx to proxy to.
 -  https://github.com/jwilder/nginx-proxy
 
 #### SSL:
 -  Certbot (https://certbot.eff.org/#ubuntuxenial-nginx) should be installed for you
 -  Run ```sudo certbot --nginx certonly``` to get certificates for the nginx proxy
+
+#### NOTE:
+-  Installing certbot looks like it leaves an nginx server running, so before youc an bring up the nginx reverse proxy you have to kill the cerbot nginx server (port 80 conflict)
