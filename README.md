@@ -28,3 +28,8 @@ Put all that stuff in the appropriate environment variables
 
 #### Then:
 vagrant up
+
+#### To start up an nginx proxy in a docker container that proxies to other docker containers:
+-  sh docker-nginx-proxy-init.sh (that script may be in /vagrant) 
+-  run your docker containers with the environment variable VIRTUAL_HOST=subdomain.domain.tld AND make sure the container is built to EXPOSE the port you want nginx to proxy to.
+-  https://github.com/jwilder/nginx-proxy
