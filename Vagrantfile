@@ -104,6 +104,11 @@ Vagrant.configure("2") do |config|
 	apt-get install -y python-certbot-nginx 
 	#------------------------SSL CERTS----------------------------------
 
+	#-----------------------DOCKER-NGINX-CONFIG------------------------
+	cp /vagrant/proxy.conf "/home/#{ENV['AWS_SSH_USERNAME']}"
+	cp /vagrant/docker-nginx-proxy-init.sh "/home/#{ENV['AWS_SSH_USERNAME']}"
+	#-----------------------DOCKER-NGINX-CONFIG------------------------
+
         #----------------DOCKER------------------------
         #install docker
         curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
